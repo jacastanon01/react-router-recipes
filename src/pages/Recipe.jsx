@@ -45,6 +45,7 @@ const DetailWrapper = styled.section`
     display: flex;
     h2 {
         margin-bottom: 2rem; 
+        text-align: center;
     }
     .active {
         background: linear-gradient(35deg, #494949, #313131);
