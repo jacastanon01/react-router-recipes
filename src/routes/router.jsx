@@ -6,37 +6,6 @@ import SearchResults from "../pages/SearchResults"
 import Recipe from "../pages/Recipe"
 import { ErrorBoundary } from "../pages/ErrorBoundary"
 
-export const router = createBrowserRouter(
-    createRoutesFromElements(
-        <Route
-            path="/"
-            element={<RootLayout />}
-        >
-            <Route
-                index
-                element={<Home />}
-            />
-            <Route
-                path="cuisine/:type"
-                element={<Cuisine />}
-                loader={getCuisine}
-                errorElement={<ErrorBoundary />}
-            />
-            <Route
-                path="/search"
-                element={<SearchResults />}
-                loader={getSearchResults}
-                errorElement={<ErrorBoundary />}
-            />
-            <Route
-                path="/recipe/:recipeId"
-                element={<Recipe />}
-                loader={getRecipe}
-                errorElement={<ErrorBoundary />}
-            />
-        </Route>
-    )
-)
 
 const getCuisine = async ({ params }) => {
     const checkLocalStorage = localStorage.getItem(params.type)
@@ -79,3 +48,35 @@ const getRecipe = async ({ params }) => {
         return data
     }
 }
+
+export const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route
+            path="/"
+            element={<RootLayout />}
+        >
+            <Route
+                index
+                element={<Home />}
+            />
+            <Route
+                path="cuisine/:type"
+                element={<Cuisine />}
+                loader={getCuisine}
+                errorElement={<ErrorBoundary />}
+            />
+            <Route
+                path="/search"
+                element={<SearchResults />}
+                loader={getSearchResults}
+                errorElement={<ErrorBoundary />}
+            />
+            <Route
+                path="/recipe/:recipeId"
+                element={<Recipe />}
+                loader={getRecipe}
+                errorElement={<ErrorBoundary />}
+            />
+        </Route>
+    )
+)
