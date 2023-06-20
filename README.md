@@ -1,5 +1,3 @@
-This app was built using React router 6's loader and action functions to control the data passed to components 
-
 ## Links
 - [Live link](https://react-spoon.onrender.com/)
 - [Repo](https://github.com/jacastanon01/react-router-recipes)
