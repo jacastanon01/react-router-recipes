@@ -13,7 +13,14 @@ function SlideWrapper({ title, children }) {
                     drag: "free",
                     gap: "1rem",
                     pagination: false,
-
+                    breakpoints: {
+                      640: {
+                        perPage: 1,
+                      },
+                      940: {
+                        perPage: 2
+                      }
+                    }
                 }}>
                   {children}
             </Splide>
@@ -22,8 +29,11 @@ function SlideWrapper({ title, children }) {
 
 }
 
-const Wrapper = styled.div`
-  margin: 4rem;
+const Wrapper = styled.article`
+  margin: 0rem;
+  @media screen and (min-width: 600px){
+    margin: 4rem;
+  }
 `;
 
 const Card = styled.div`

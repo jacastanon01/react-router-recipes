@@ -7,7 +7,7 @@ import styled from "styled-components"
 
 function RootLayout() {
     return (
-        <div>
+        <StyledMain>
             <Home to={'/'}>
                 <h2>
                     <FaHome /> Home
@@ -16,9 +16,15 @@ function RootLayout() {
             <Search />
             <Category />
             <Outlet />
-        </div>
+        </StyledMain>
     )
 }
+
+const StyledMain = styled.main`
+    @media (min-width: 481px){
+        margin: 0 2rem;
+    }
+`
 
 const Home = styled(Link)`
     text-decoration: none;
@@ -26,6 +32,7 @@ const Home = styled(Link)`
     h2 {
         display: flex;
         align-items: center;
+        justify-content: center;
         svg {
             padding-right: 0.4rem;
         }

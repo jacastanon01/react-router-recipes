@@ -28,9 +28,13 @@ function Category(){
 }
 
 const Categories = styled.section`
-    display: flex;
-    justify-content: space-evenly;
-    margin: 2rem 0;
+    @media (min-width: 481px){
+        place-items: center;
+    }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    margin: 1rem;
 `
 
 const StyledLink = styled(NavLink)`
@@ -38,8 +42,9 @@ const StyledLink = styled(NavLink)`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 6.5rem;
-    width: 6.5rem;
+    height: calc(10px + 6.5rem);
+    width: calc(10px + 6.5rem);
+    padding: 0.3rem;
     align-items: center;
     cursor: pointer;
     border-radius: 50%;

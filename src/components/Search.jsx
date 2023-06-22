@@ -14,9 +14,25 @@ function Search() {
 }
 
 const StyledForm = styled(Form)`
-    margin: 0 20rem;
+  @media (min-width: 320px) and (max-width: 481px) {
+    display: flex;
+    justify-content: center;
+    .input-query {
+      width: 50%;
+    }
+    svg {
+      left: calc(50% - 8rem);
+    }
+  }
+  @media (min-width: 481px){
+    svg {
+      left: calc(50% - 14rem);
+    }
+  }
+    display: flex;
+    justify-content: center;
     position: relative;
-    width: 100%;
+    width: 100vw;
 
     .input-query {
         border: none;
@@ -33,7 +49,7 @@ const StyledForm = styled(Form)`
     svg {
         position: absolute;
         top: 50%;
-        left: 1%;
+
         transform: translate(100%, -50%);
         color: white;
         cursor: pointer;
