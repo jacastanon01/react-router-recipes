@@ -15,7 +15,6 @@
 }
 
 input[type="text"] {
-  font-size: 100%; /* 1 */
   line-height: 1.15;
   overflow: visible;
 }
