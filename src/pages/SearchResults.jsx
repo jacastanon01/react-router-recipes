@@ -7,7 +7,8 @@ function SearchResults(){
     const data = useLoaderData()
 
     return (
-        <Grid
+        <motion.section
+            className="grid"
             animate={{opacity: 1}}
             initial={{opacity: 0}}
             exit={{opacity: 0}}
@@ -16,7 +17,7 @@ function SearchResults(){
             {data.map((result) => (
                 <Card key={result.id} recipe={result} />               
             ))}
-        </Grid>
+        </motion.section>
     )
 
 }

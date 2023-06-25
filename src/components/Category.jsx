@@ -28,13 +28,11 @@ function Category(){
 }
 
 const Categories = styled.section`
-    @media (min-width: 481px){
-        place-items: center;
-    }
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     gap: 1rem;
     margin: 1rem;
+    place-items: center;
 `
 
 const StyledLink = styled(NavLink)`
@@ -51,11 +49,11 @@ const StyledLink = styled(NavLink)`
     margin-right: 2rem;
     background: linear-gradient(45deg, #494949, #313131);
     h3 {
-        color: white;
+        color: var(--primColor);
         font-size: 0.8rem;
     }
     svg {
-        color: white;
+        color: var(--primColor);
         font-size: 1.5rem;
     }
     &.active {

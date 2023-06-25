@@ -2,39 +2,28 @@ import styled from "styled-components"
 import { useState } from "react"
 import { FaSearch } from "react-icons/fa"
 import { Form } from "react-router-dom"
+import styles from "./Search.module.scss"
 
 function Search() {
   const [query, setQuery] = useState('')
   return (
     <StyledForm method="get" action={`/search`} onSubmit={() => setQuery('')}>
-        <input className="input-query" type="text" value={query} onChange={(e) => setQuery(e.target.value)} name="query" />
-        <FaSearch />
+        <input className={styles["input-query"]} type="text" value={query} onChange={(e) => setQuery(e.target.value)} name="query" />
+        <div className={styles["search-icon-container"]}>
+          <FaSearch />
+        </div>
     </StyledForm>
   )
 }
 
 const StyledForm = styled(Form)`
-  @media (min-width: 320px) and (max-width: 481px) {
-    display: flex;
-    justify-content: center;
-    .input-query {
-      width: 50%;
-    }
-    svg {
-      left: calc(50% - 8rem);
-    }
-  }
-  @media (min-width: 481px){
-    svg {
-      left: calc(50% - 14rem);
-    }
-  }
-    display: flex;
+  min-width: 100vw;
+    display: inline-flex;
     justify-content: center;
     position: relative;
-    width: 100vw;
-
     .input-query {
+      width: 25vw;
+      z-index: 2;
         border: none;
         font-size: 1.5rem;
         padding: 1rem 3rem;
@@ -45,16 +34,47 @@ const StyledForm = styled(Form)`
         margin: 1rem;
         font-weight: 500;
         letter-spacing: 0.1rem;
+        //min-width: 50%;
     }
+    `
+  const SearchIcon = styled.span`
+  @media (min-width: 319px) and (max-width: 600px) {
+    //justify-content: center
+    width: 100%;
+    // svg {
+    //   left: calc(50% - 6rem);
+    // }
+    padding-left: 50vw;
+  }
+  @media (min-width: 863px){
+
+    //padding-left: calc(100vw - 33vw);
     svg {
-        position: absolute;
-        top: 50%;
-
-        transform: translate(100%, -50%);
-        color: white;
-        cursor: pointer;
+      //padding-left: 17rem;
+      //left: min(calc(40% - 10rem), 21%);
     }
-
-`
+  }
+  @media (min-width: 491px) and (max-width: 862px){
+    padding-left: calc(100vw - 37vw);
+  }
+    //display: flex;
+    //min-width: max(calc(50% + 9rem), 60%);
+    min-width: 100vw;
+    height: 100%;
+    //padding-left: calc(100vw - 33vw);
+    position: absolute;
+    display: inline-block;
+    align-items: center;
+    svg {
+      z-index: 5;
+      position: absolute;
+      top: 50%;
+      //padding-left: 17rem;
+      transform: translate(100%, -50%);
+      color: var(--primColor);
+      cursor: pointer;
+      width: 1rem;
+  }
+  `
 
 export default Search

@@ -17,7 +17,7 @@ function SlideWrapper({ title, children }) {
                       640: {
                         perPage: 1,
                       },
-                      940: {
+                      1082: {
                         perPage: 2
                       }
                     }
