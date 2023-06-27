@@ -14,31 +14,12 @@ function SearchResults(){
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
           >
-            {data.map((result) => (
+            {data?.map((result) => (
                 <Card key={result.id} recipe={result} />               
             ))}
         </motion.section>
     )
 
 }
-
-const Grid = styled(motion.section)`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    grid-gap: 3rem;
-    align-items: center;
-`
-
-// const StyledCard = styled.div`
-//     height: 100%;
-//     display: grid;
-//     flex-direction: column;
-//     justify-items: center;
-//     img {
-//         width: 100%;
-//         height: 100%;
-//         border-radius: 2rem;
-//     }
-// `
 
 export default SearchResults

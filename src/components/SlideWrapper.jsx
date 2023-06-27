@@ -30,37 +30,10 @@ function SlideWrapper({ title, children }) {
 }
 
 const Wrapper = styled.article`
+@media screen and (min-width: 600px){
+  margin: 4rem;
+}
   margin: 0rem;
-  @media screen and (min-width: 600px){
-    margin: 4rem;
-  }
-`;
-
-const Card = styled.div`
-  min-height: 25rem;
-  overflow: hidden;
-  position: relative;
-  img {
-    border-radius: 2rem;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    object-fit: cover;
-    
-  }
-  p {
-    position: absolute;
-    z-index: 10;
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%, 0%);
-    color: white;
-    font-size: 1rem;
-    text-align: center;
-    font-weight: 800;
-    height: 40%;
-  }
 `;
 
 export default SlideWrapper

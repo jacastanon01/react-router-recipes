@@ -1,6 +1,7 @@
 import Veggies from "../components/Veggies";
 import Popular from "../components/Popular";
 import { motion } from "framer-motion";
+import CuisinesGrid from "../components/CuisinesGrid";
 
 
 function Home(){
@@ -11,6 +12,7 @@ function Home(){
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
         >
+            <CuisinesGrid />
             <Popular />
             <Veggies />
         </motion.section>

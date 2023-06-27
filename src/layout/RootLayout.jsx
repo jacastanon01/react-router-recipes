@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom"
-import Category from "../components/Category"
 import Search from "../components/Search"
 import { FaHome } from "react-icons/fa"
 import { Link } from "react-router-dom"
@@ -8,13 +7,12 @@ import styled from "styled-components"
 function RootLayout() {
     return (
         <StyledMain>
-            <Home to={'/'}>
+            <HomeLink to={'/'}>
                 <h2>
                     <FaHome /> Home
                 </h2>
-            </Home>
+            </HomeLink>
             <Search />
-            <Category />
             <Outlet />
         </StyledMain>
     )
@@ -26,9 +24,9 @@ const StyledMain = styled.main`
     }
 `
 
-const Home = styled(Link)`
+const HomeLink = styled(Link)`
     text-decoration: none;
-    color: black;
+    color: var(--primColor);
     h2 {
         display: flex;
         align-items: center;

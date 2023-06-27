@@ -1,0 +1,32 @@
+.cuisine-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 1rem;
+    margin: 1rem;
+    place-items: center;
+}
+
+.cuisine-item {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(10px + 6.5rem);
+    width: calc(10px + 6.5rem);
+    padding: 0.3rem;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-right: 2rem;
+    background: linear-gradient(45deg, #494949, #313131);
+    h3 {
+        color: var(--primColor);
+        font-size: 0.8rem;
+    }
+    svg {
+        color: var(--primColor);
+        font-size: 1.5rem;
+    }
+
+}
+
