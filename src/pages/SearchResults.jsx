@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Card from "../components/Card"
 import { motion } from "framer-motion"
 import { Suspense } from "react"
-import { SearchError } from "./SearchError"
+//import { SearchError } from "./SearchError"
 
 export async function getSearchResults({ request }) {
     console.log(request)
