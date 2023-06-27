@@ -2,7 +2,7 @@ import RootLayout from "../layout/RootLayout"
 import Cuisine from "../pages/Cuisine"
 import Home from "../pages/Home"
 import { createBrowserRouter, Route, createRoutesFromElements, json } from 'react-router-dom'
-import SearchResults from "../pages/SearchResults"
+import SearchResults, {getSearchResults} from "../pages/SearchResults"
 import Recipe from "../pages/Recipe"
 import { ErrorBoundary } from "../pages/ErrorBoundary"
 //import { getSearchResults } from "../pages/SearchResults"
