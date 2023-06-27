@@ -5,7 +5,7 @@ import { createBrowserRouter, Route, createRoutesFromElements, json } from 'reac
 import SearchResults from "../pages/SearchResults"
 import Recipe from "../pages/Recipe"
 import { ErrorBoundary } from "../pages/ErrorBoundary"
-import { getSearchResults } from "../pages/SearchResults"
+//import { getSearchResults } from "../pages/SearchResults"
 
 
 const getCuisine = async ({ params }) => {
