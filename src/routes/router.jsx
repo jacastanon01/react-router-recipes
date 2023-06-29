@@ -5,7 +5,7 @@ import { createBrowserRouter, Route, createRoutesFromElements, json } from 'reac
 import SearchResults, {getSearchResults} from "../pages/SearchResults"
 import Recipe from "../pages/Recipe"
 import { ErrorBoundary } from "../pages/ErrorBoundary"
-//import { getSearchResults } from "../pages/SearchResults"
+import { SearchError } from "../pages/SearchError"
 
 
 const getCuisine = async ({ params }) => {
@@ -55,13 +55,13 @@ export const router = createBrowserRouter(
                 errorElement={<ErrorBoundary />}
             />
             <Route
-                path="/search"
+                path="search"
                 element={<SearchResults />}
                 loader={getSearchResults}
-                errorElement={<ErrorBoundary />}
+                errorElement={<SearchError />}
             />
             <Route
-                path="/recipe/:recipeId"
+                path="recipe/:recipeId"
                 element={<Recipe />}
                 loader={getRecipe}
                 errorElement={<ErrorBoundary />}

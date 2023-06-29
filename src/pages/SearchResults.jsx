@@ -1,46 +1,38 @@
-import {useLoaderData, useSearchParams, defer, Await, json, useRouteError} from "react-router-dom"
+import {useLoaderData, useSearchParams, defer, Await, json, useRouteError, redirect} from "react-router-dom"
 import styled from "styled-components"
 import Card from "../components/Card"
 import { motion } from "framer-motion"
 import { Suspense } from "react"
-//import { SearchError } from "./SearchError"
+import { SearchError } from "./SearchError"
 
 export async function getSearchResults({ request }) {
-    console.log(request)
-    let url = new URL(request.url);
-    let searchTerm = url.searchParams.get("query");
-    //console.log(searchTerm)
-    if (searchTerm) {
-        const fetchApi = fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${import.meta.env.VITE_API_KEY}&query=${searchTerm}`).then(res => res.json())
-        //const result = fetchApi.json()
-        //console.log(result)
-        // if (result.totalResults === 0) {
-        //     throw json({
-        //         query: searchTerm,
-                
-        //     })
-        //console.log(fetchApi)
-        
-        return defer({searchResults: await fetchApi})
-    } else {
+    const url = new URL(request.url);
+    const searchTerm = url.searchParams.get("query");
+
+    if (!isValidString(searchTerm)) {
         throw json({
-            status: 404,
-            message: `${searchTerm} not found`
+            message: 'Please enter a type of food or ingredient to search. No special characters or numbers are allowed. I\'m not judging you but if your diet consists of numbers you may wanna get checked out for botulism 🤖'
         })
     }
-    //return null  
-    // throw json({
-    //     query: searchTerm
-    // })
+    const fetchApi = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${import.meta.env.VITE_API_KEY}&query=${searchTerm}`
+    )
+    const result = await fetchApi.json()
+
+    if (result.totalResults === 0) {
+        throw json({
+            message: `${searchTerm} not found`          
+        })
+    }   
+    function isValidString(value) {
+        const excludedChars = /[!@#$%^&*().?":{}|<>1234567890]/
+        return !excludedChars.test(value) && searchTerm.trim().length > 0
+    }
+    return defer({searchResults: result.results})
 } 
-
-
 
 function SearchResults(){
     const data = useLoaderData()
-    //const [query, setQuery] = useSearchParams()
-    const error = useRouteError()
-    console.log(data.searchResults.results)
 
     return (
         <motion.section
@@ -50,19 +42,18 @@ function SearchResults(){
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
           >
-            <Suspense fallback={<p>Loading package location...</p>}>
-                <Await resolve={data.searchResults} errorElement={<p>{error?.data?.message}</p>}>
-                    {data.searchResults.results.length > 0 &&
-                        data.searchResults?.results.map((result) => (
+            <Suspense fallback={<p>Loading recipes...</p>}>
+                <Await resolve={data.searchResults} errorElement={<p>Problem fetching the data...</p>}>
+                    {(resolvedData) => 
+                        resolvedData &&
+                        resolvedData.map((result) => (
                             <Card key={result.id} recipe={result} />               
-                        )) 
+                        ))
                     }
                 </Await>
-            </Suspense>
-            
+            </Suspense>           
         </motion.section>
     )
-
 }
 
 export default SearchResults
