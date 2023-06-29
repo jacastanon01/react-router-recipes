@@ -1,6 +1,6 @@
 import {useLoaderData, useSearchParams, defer, Await, json, useRouteError, redirect} from "react-router-dom"
 import styled from "styled-components"
-import Card from "../components/Card"
+import Card from "../components/UI/Card"
 import { motion } from "framer-motion"
 import { Suspense } from "react"
 import { SearchError } from "./SearchError"

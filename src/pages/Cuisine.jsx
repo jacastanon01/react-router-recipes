@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom"
-import Card from "../components/Card"
+import Card from "../components/UI/Card"
 import { motion } from "framer-motion"
 import styled from "styled-components"
 import CuisinesGrid from "../components/CuisinesGrid"

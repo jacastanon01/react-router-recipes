@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import SlideWrapper from "./SlideWrapper";
-import Card from "./Card";
+import SlideWrapper from "./UI/SlideWrapper";
+import Card from "./UI/Card";
 
 function Popular() {
   const [recipes, setRecipes] = useState([]);
