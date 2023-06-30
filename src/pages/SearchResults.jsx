@@ -1,9 +1,7 @@
-import {useLoaderData, useSearchParams, defer, Await, json, useRouteError, redirect} from "react-router-dom"
-import styled from "styled-components"
+import { defer, json} from "react-router-dom"
 import Card from "../components/UI/Card"
 import { motion } from "framer-motion"
-import { Suspense } from "react"
-import { SearchError } from "./SearchError"
+import SuspenseWrapper from "../components/UI/SuspenseWrapper"
 
 export async function getSearchResults({ request }) {
     const url = new URL(request.url);
@@ -32,7 +30,7 @@ export async function getSearchResults({ request }) {
 } 
 
 function SearchResults(){
-    const data = useLoaderData()
+    //const data = useLoaderData()
 
     return (
         <motion.section
@@ -42,16 +40,15 @@ function SearchResults(){
             exit={{opacity: 0}}
             transition={{duration: 0.5}}
           >
-            <Suspense fallback={<p>Loading recipes...</p>}>
-                <Await resolve={data.searchResults} errorElement={<p>Problem fetching the data...</p>}>
-                    {(resolvedData) => 
-                        resolvedData &&
-                        resolvedData.map((result) => (
-                            <Card key={result.id} recipe={result} />               
-                        ))
-                    }
-                </Await>
-            </Suspense>           
+            <SuspenseWrapper>
+                {(resolvedData) => 
+                    resolvedData.searchResults &&
+                    resolvedData.searchResults.map((result) => (
+                        <Card key={result.id} recipe={result} />               
+                    ))
+                }
+            </SuspenseWrapper>
+         
         </motion.section>
     )
 }

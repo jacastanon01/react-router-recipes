@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Splide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
 function SlideWrapper({ title, children }) {
