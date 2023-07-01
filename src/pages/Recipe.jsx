@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import styles from "./Recipe.module.scss"
 import { motion } from "framer-motion";
+import ReadMore from "../components/UI/ReadMore";
 
 export const getRecipe = async ({ params }) => {
     const checkLocalStorage = localStorage.getItem(params.recipeId)
@@ -12,7 +13,6 @@ export const getRecipe = async ({ params }) => {
         const fetchApi = await fetch(`https://api.spoonacular.com/recipes/${params.recipeId}/information?apiKey=${import.meta.env.VITE_API_KEY}`)
         const data = await fetchApi.json()
         localStorage.setItem(params.recipeId, JSON.stringify(data))
-        console.log(data)
         return data
     }
 }
@@ -45,17 +45,16 @@ function Recipe(){
                 >Instructions</button>
                 <button
                     className={`
-                    ${styles['recipe-btn']} ${
-                        activeTab === 'ingredients' ? styles.active : ''
-                    }
-                `}
+                        ${styles['recipe-btn']} ${
+                            activeTab === 'ingredients' ? styles.active : ''
+                        }
+                    `}
                     onClick={() => setActiveTab('ingredients')}
                 >Ingredients</button>
                 {
                     activeTab === 'instructions' ? (
-                        <div>
-                            <h3 dangerouslySetInnerHTML={{__html: data.instructions}} />
-                        </div> ) : (
+                        <ReadMore text={data.instructions} /> 
+                    ) : (
                         <ul>
                             {data.extendedIngredients.map(item => (
                                 <li key={item.id}>{item.original}</li>
