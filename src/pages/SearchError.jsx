@@ -10,9 +10,9 @@ export function SearchError() {
         console.log(error);
         return (
             <StyledErrorMessage>
-                <div>
+                <h3 className="error-message">
                     {error.data.message}
-                </div>
+                </h3>
                 <button onClick={handleClickRandomRecipe}>Click here to find another recipe</button>
             </StyledErrorMessage>
         )
@@ -34,5 +34,15 @@ export function SearchError() {
 
 const StyledErrorMessage = styled.section`
     display: grid;
-
+    gap: 1rem;
+    justify-items: center;
+    font-size: 1rem;
+    .error-message {
+        width: 70%;
+        align-self: center;
+        text-align: center;
+    }
+    button {
+        cursor: pointer;
+    }
 `
