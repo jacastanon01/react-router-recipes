@@ -25,9 +25,4 @@ All in all, the React Router v6 Data API provides a higher-level abstraction tha
 
  ---
 
-## Challenges I faced
-While trying to set up the input form, I wanted the search icon to be placed at the start of the input box. My intial idea was to set the icon to absolute and the input to relative to achieve the display of the svg on top of the form and then position by the left and top attributes. I could achieve this but it was not a reponsive design by any means. I tried using css functions within media-queries to manually calculate the the positions, but while re-sizing the window the icon would move out of place before re-positioning itself. This was because whenever the window was being re-sized, calculations for the position were being run, which led to a glitchy user experience and ultimately messy code that needed more media-queries to calculate the precise position within the input form. 
-
-Solution was to nest the svg into it's own element. Setting the form containers width with vw instead of % allows the css to calculate based on each browser window's available visible space. Then I set display to grid instead of flexbox on the form and set both child elements on top of each other by defining `grid-column` as the same value. Since both elements were in the same column, their width would consistently match and I could use the media-queries to define precise spacing. I have always used flexbox as my default responsive layout, but CSS Grid simplified this whole problem since flexbox was causing browser compatability issues as well.  
-
 
